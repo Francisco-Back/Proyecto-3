@@ -10,9 +10,18 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Auto Partes</title>
+        <link rel="stylesheet" type="text/css" href="Css/Estilos.css" media="screen" />
     </head>
-    <body>
-        <h1>Ingreso</h1>
+    <body >
+        <img  src="Imagenes/29490_1920_1200.jpg" alt="Fondo" id="dg"/>
+        <div>
+            <<img src="Imagenes/LogoEmpresa.png" alt="Panel" id="Logo"/>
+        </div>
+        <p id="Ingreso">
+            <label  id="Ingreso" for="Usuario"> Usuario:</label> 
+        </p>
+                
     </body>
     
+
 </html>
