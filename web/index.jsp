@@ -14,24 +14,28 @@
     </head>
     <body >
         <img  src="Imagenes/29490_1920_1200.jpg" alt="Fondo" id="dg"/>
-       
-            <!-- Ingreso imagen logo -->
-             <img src="Imagenes/LogoEmpresa.png" alt="Panel" id="Logo"/>.
-             <div class="box">
-                
+
+        <!-- Ingreso imagen logo -->
+        <img src="Imagenes/LogoEmpresa.png" alt="Panel" id="Logo"/>.
+        <div class="box">
+
             <!-- ingreso de mensaje -->
             <h1>Login Here</h1>
             <form >
                 <!-- creando Usuario -->
                 <label for="Nombre Usuario"> Usuario </label>
-                <input type="text" placeholder="Usuario"> 
-                 <!-- creando Password -->
+                <input type="text" placeholder="Usuario"/> 
+                <!-- creando Password -->
                 <label for="Password"> Contraseña </label>
-                <input type="Password" placeholder="Password">
+                <input type="Password" placeholder="Password"/>
                 <!-- Boton -->
-                <input type="submit " value="Login">
+                <input  type="submit" value="Login"/>
                 <!-- enlase -->
-                <a href="#">Recuperaicon de Contraseña</a>
+                <a href="#">Recuperacion de Contraseña</a>
+                <%
+
+
+                %>
             </form>
         </div>
 
