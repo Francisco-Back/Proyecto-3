@@ -5,6 +5,8 @@
  */
 package Controlador;
 
+import Clases.Usuario;
+import Global.UsuarioDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -27,22 +29,27 @@ public class Controlador extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    UsuarioDAO usr=new UsuarioDAO();
+    Usuario ur=new Usuario();
+    int r=0;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Controlador</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Controlador at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
+      String accion=request.getParameter("accion");
+      if(accion.equals("Login")){
+          String usuario=request.getParameter("txtUser");
+          String password=request.getParameter("txtpassword");
+          ur.setUsuario(usuario);
+          ur.setPassword(password);
+          r=usr.Validar(ur);
+          if(r==1){
+              request.getRequestDispatcher("Principal.jsp").forward(request, response);
+          }else{
+              request.getRequestDispatcher("index.jsp").forward(request, response);
+          }
+      }
+        }   
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
