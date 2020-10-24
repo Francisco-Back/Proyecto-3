@@ -21,15 +21,15 @@
 
             <!-- ingreso de mensaje -->
             <h1>Login Here</h1>
-            <form  action="Principal.jsp">
+            <form  action="Controlador">
                 <!-- creando Usuario -->
                 <label for="Nombre Usuario"> Usuario </label>
-                <input type="text" placeholder="Usuario"/> 
+                <input type="text" placeholder="Usuario" name="txtUser"/> 
                 <!-- creando Password -->
                 <label for="Password"> Contraseña </label>
-                <input type="Password" placeholder="Password"/>
+                <input type="Password" placeholder="Password" name="txtpassword"/>
                 <!-- Boton -->
-                <input  type="submit" value="Login"/>
+                <input  type="submit" value="Login" name="accion">
                 <!-- enlase -->
                 <a href="#">Recuperacion de Contraseña</a>
                 <%
