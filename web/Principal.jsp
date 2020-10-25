@@ -36,16 +36,16 @@
                 <a  style="color: #ffffff"href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Cerrar cesión   </a>
                 <div class="dropdown-menu text-center">
                     <a><img src="Imagenes/usuario.jpg" height="80" width="80"</a>
-                    <a>User</a>
+                <a>${usuario}</a>
                     <div class="dropdown-divider"></div>
-                    <a  href="index.jsp" class="dropdown-item">Salir</a>
+                    <a  href="Controlador?accion=Salir" class="dropdown-item">Salir</a>
                     
                 </div>
                     
             </div>
         </nav>
         <div class="container mt-4">
-            <h1 style="color: #ffffff">Bienvenido.......<strong>Usuario:</strong></h1>
+            <h1 style="color: #ffffff">Bienvenido.......<strong>Usuario:${usuario}</strong></h1>
         </div>
         
        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
