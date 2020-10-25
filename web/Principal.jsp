@@ -11,12 +11,26 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <title>Auto Partes Principal</title>
-        <link rel="stylesheet" type="text/css" href="Css/Principall.css" media="screen" />
+       
+        <link rel="stylesheet" type="text/css" href="Css/Estilos.css" media="screen" />
+        
     </head>
     <body>
-       
-        <nav class="navbar navbar-dark bg-dark">
-            <a  style="color: #ffffff"class="navbar-toggler"><span class="navbar-toggler-icon"></span> Home</a>
+        <img src="Imagenes/Imagen2.jpg" alt="fondop" id="dg"/>
+        <nav class="navbar navbar-expanad-lg navbar-dark bg-dark">
+            
+          <div class="dropdown">
+                <a  style="color: #ffffff"class="navbar-toggler" href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><span class="navbar-toggler-icon"></span> Inicio</a>
+                <div  class="dropdown-menu text-center">
+                    <a  href="Principal.jsp" class="dropdown-item">Inicio</a>
+                    <a  href="Cliente.jsp" class="dropdown-item">Cliente</a>
+                    <a  href="Cliente.jsp" class="dropdown-item">Producto</a>
+                    <a  href="Cliente.jsp" class="dropdown-item">Compra</a>
+                    <a  href="Cliente.jsp" class="dropdown-item">Ingesar Cliente</a>
+                    
+                </div>    
+            </div>
+           
             
             <div class="dropdown">
                 <a  style="color: #ffffff"href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Cerrar cesión   </a>
@@ -31,7 +45,7 @@
             </div>
         </nav>
         <div class="container mt-4">
-            <h1>Bienvenido.......<strong>Usuario:</strong></h1>
+            <h1 style="color: #ffffff">Bienvenido.......<strong>Usuario:</strong></h1>
         </div>
         
        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
