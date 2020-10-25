@@ -21,7 +21,7 @@
 
             <!-- ingreso de mensaje -->
             <h1>Login Here</h1>
-            <form  action="Controlador">
+            <form  action="Controlador" method="POST">
                 <!-- creando Usuario -->
                 <label for="Nombre Usuario"> Usuario </label>
                 <input type="text" placeholder="Usuario" name="txtUser"/> 
@@ -33,7 +33,7 @@
                 <!-- enlase -->
                 <a href="#">Recuperacion de Contraseña</a>
                 <%
-               
+             
                
 
                 %>
