@@ -12,5 +12,5 @@ import Clases.Usuario;
  * @author Francisco Back
  */
 public interface Validar {
-    public String Validar(Usuario  user);
+    public int Validar(Usuario  user);
 }
