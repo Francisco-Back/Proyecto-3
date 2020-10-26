@@ -23,17 +23,17 @@
                 <a  style="color: #ffffff"class="navbar-toggler" href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><span class="navbar-toggler-icon"></span> Inicio</a>
                 <div  class="dropdown-menu text-center">
                     <a  href="Principal.jsp" class="dropdown-item">Inicio</a>
-                    <a  href="Cliente.jsp" class="dropdown-item">Cliente</a>
-                    <a  href="Cliente.jsp" class="dropdown-item">Producto</a>
-                    <a  href="Cliente.jsp" class="dropdown-item">Compra</a>
-                    <a  href="Cliente.jsp" class="dropdown-item">Ingesar Cliente</a>
+                    <a  href="ControladorPrincipal?menu=Compra" class="dropdown-item"  target="myFrame">Compra</a>
+                    <a  href="ControladorPrincipal?menu=Orden "class="dropdown-item"  target="myFrame">Orden</a>
+                    <a  href="ControladorPrincipal?menu=Ingesar_Cliente&accion=Listar"class="dropdown-item"  target="myFrame">Ingesar_Cliente</a>
+                    <a  href="ControladorPrincipal?menu=Ingesar_Producto" class="dropdown-item"  target="myFrame">Ingesar_Producto</a>
                     
                 </div>    
             </div>
            
             
             <div class="dropdown">
-                <a  style="color: #ffffff"href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Cerrar cesión   </a>
+                <a  style="color: #ffffff"href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"> Cerrar:${usuario}  </a>
                 <div class="dropdown-menu text-center">
                     <a><img src="Imagenes/usuario.jpg" height="80" width="80"</a>
                 <a>${usuario}</a>
@@ -44,8 +44,13 @@
                     
             </div>
         </nav>
-        <div class="container mt-4">
-            <h1 style="color: #ffffff">Bienvenido.......<strong>Usuario:${usuario}</strong></h1>
+      
+        <div class="m-4" style="height: 650px" >
+            <iframe name="myFrame" style="height: 100%; width: 100%; border: none"></iframe>
+            
+        </div>
+                      <div class="container mt-4">
+            <h3 style="color: #ffffff">Bienvenido.......<strong>Usuario:${usuario}</strong></h3>
         </div>
         
        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
