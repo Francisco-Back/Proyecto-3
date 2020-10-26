@@ -5,8 +5,11 @@
  */
 package Controlador;
 
+import Global.UsuarioDAO;
+import Herencia.Empresa;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,8 +32,43 @@ public class ControladorPrincipal extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    Empresa em= new Empresa();
+    UsuarioDAO edao= new UsuarioDAO();
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String menu=request.getParameter("menu");
+        String accion=request.getParameter("accion");
+        if(menu.equals("Principal")){
+            request.getRequestDispatcher("Principal.jsp").forward(request, response);
+        }
+        if(menu.equals("Ingesar_Cliente")){
+            switch(accion){
+                case  "Listar": 
+                    List lista=edao.Lista();
+                request.setAttribute("empresa", lista);
+                
+                    break; 
+                case  "Agregar":break;
+                case  "Editar":break;
+                case  "Eliminar":break;
+                default: throw new AssertionError();
+            }
+            request.getRequestDispatcher("Ingesar_Cliente.jsp").forward(request, response);
+            
+        }
+        if(menu.equals("Ingesar_Producto")){
+            request.getRequestDispatcher("Ingesar_Producto.jsp").forward(request, response);
+            
+        }
+        if(menu.equals("Compra")){
+            request.getRequestDispatcher("Compra.jsp").forward(request, response);
+            
+        }
+        if(menu.equals("Orden")){
+            request.getRequestDispatcher("Orden.jsp").forward(request, response);
+            
+        }
+       
  
     }
 
