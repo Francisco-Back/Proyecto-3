@@ -22,6 +22,7 @@ private static int correlativoCodigo=1;
     public String Codigo;
     private String Empresa;
     private String Funcion;
+    private String TipoCliente;
     private List<Cliente>cliente;
     
     
@@ -39,17 +40,34 @@ private static int correlativoCodigo=1;
         this.Codigo = "";
         this.Empresa = "";
         this.Funcion = "";
+        this.TipoCliente = "";
     }
 
-    public Cliente(int IdCliente, String NombreCliente, String Codigo, String Empresa, String Funcion) {
+    public Cliente(int IdCliente, String NombreCliente, String Codigo, String Empresa, String Funcion , String TipoCliente) {
         this.IdCliente=correlativoCodigo++;
         this.NombreCliente = NombreCliente;
         this.Codigo = Codigo;
         this.Empresa = Empresa;
         this.Funcion = Funcion;
+        this.TipoCliente = TipoCliente;
     }
 
  // se cre los metodos get y set
+
+    public String getTipoCliente() {
+        return TipoCliente;
+    }
+
+    public void setTipoCliente(String TipoCliente) {
+        this.TipoCliente = TipoCliente;
+    }
+    
+    
+    public void setIdCliente(int IdCliente) {
+        this.IdCliente = IdCliente;
+    }
+    
+
     public String getCliente() {
         return NombreCliente;
     }
