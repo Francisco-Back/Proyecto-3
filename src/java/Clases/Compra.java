@@ -15,9 +15,7 @@ public class Compra {
     // se definen sus atributos
 
     private static int correlativo = 1;
-    private int idOrden;
-    private int idCliente;
-    private String Ncliente;
+    private int IdOrden;
     Cliente cliente;
     ItemOrden item1;
     ItemOrden item2;
@@ -33,7 +31,7 @@ public class Compra {
 
     public Compra(int idOrden) {
 
-        this.idOrden = correlativo++;
+        this.IdOrden = correlativo++;
     }
 
     public Compra() {
@@ -55,11 +53,11 @@ public class Compra {
 
     public Compra(int pCliente, Date Pfecha) {
         this(Pfecha);
-        idOrden = pCliente;
+        IdOrden = pCliente;
     }
 
     public Compra(int idOrden, Date FechaOrden,  String Envio,  ItemOrden item1, Cliente cliente, ItemOrden item2,  double PrecioEnvio, double Total,String Estado, int DiasEnvio) {
-        this.idOrden = idOrden;
+        this.IdOrden = idOrden;
         this.cliente = cliente;
         this.item1 = item1;
         this.item2 = item2;
@@ -84,7 +82,7 @@ public class Compra {
 //se crea el metodo toSring
     @Override
     public String toString() {
-        return "Orden{" + "idOrden=" + idOrden + ", cliente=" + cliente + ", item1=" + item1 + ", item2=" + item2 + ", FechaOrden=" + FechaOrden + ", PrecioEnvio=" + PrecioEnvio + ", Total=" + Total + ", Envio=" + Envio + ", Estado=" + Estado + ", DiasEnvio=" + DiasEnvio + '}';
+        return "Orden{" + "idOrden=" + IdOrden + ", cliente=" + cliente + ", item1=" + item1 + ", item2=" + item2 + ", FechaOrden=" + FechaOrden + ", PrecioEnvio=" + PrecioEnvio + ", Total=" + Total + ", Envio=" + Envio + ", Estado=" + Estado + ", DiasEnvio=" + DiasEnvio + '}';
     }
 
 }
