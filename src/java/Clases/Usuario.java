@@ -10,8 +10,14 @@ package Clases;
  * @author Francisco Back
  */
 public class Usuario {
+
     private String Usuario;
     private String password;
+
+    public Usuario() {
+        this.Usuario = "";
+        this.password = "";
+    }
 
     public Usuario(String Usuario, String password) {
         this.Usuario = Usuario;
@@ -33,5 +39,5 @@ public class Usuario {
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
 }
