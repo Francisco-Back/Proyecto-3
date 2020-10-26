@@ -43,10 +43,17 @@ public class Controlador extends HttpServlet {
           ur.setPassword(password);
           r=usr.Validar(ur);
           if(r==1){
-              request.getRequestDispatcher("Principal.jsp").forward(request, response);
+              request.getSession().setAttribute("usuario", usuario);
+              request.getRequestDispatcher("ControladorPrincipal?menu=Principal").forward(request, response);
+              
           }else{
-              request.getRequestDispatcher("index.jsp").forward(request, response);
+              request.getRequestDispatcher("LoginError.jsp").forward(request, response);
+              
+              
           }
+      }else{
+           request.getRequestDispatcher("index.jsp").forward(request, response);
+           
       }
         }   
     
