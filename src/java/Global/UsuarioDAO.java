@@ -80,21 +80,36 @@ public class UsuarioDAO implements Validar {
         }
         return lista;
     }
-  
-
-    public int Agregar(Empresa h) {
-        String sql = "INSET INTO ClIENTE(idcliente,dpi,nombrecliente,codigo,empresa,funcion,descuento,Cliente1)VALUES()";
+   
+   public int contador() {
+       int contador = 0;
+        String sql = "SELECT * FROM CLIENTE";
         try {
             conn = cn.getConexion();
             ps = conn.prepareStatement(sql);
-            ps.setInt(1, h.getIdCliente());
-            ps.setString(2, h.getDpi());
-            ps.setString(3, h.getNombreCliente());
-            ps.setString(4, h.getCodigo());
-            ps.setString(5, h.getEmpresa());
-            ps.setString(6, h.getFuncion());
-            ps.setInt(7, h.getDescuento());
-            ps.setString(8, h.getTipoCliente());
+            rs = ps.executeQuery();
+            while (rs.next()) {
+            contador++;
+            }
+        } catch (Exception e) {
+
+        }
+        return contador;
+    }
+
+    public int Agregar(Empresa em) {
+        String sql = "INSERT INTO ClIENTE(idcliente,dpi,nombrecliente,codigo,empresa,funcion,descuento,cliente1)VALUES(?,?,?,?,?,?,?,? )";
+        try {
+            conn = cn.getConexion();
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, em.getIdCliente());
+            ps.setString(2, em.getDpi());
+            ps.setString(3, em.getNombreCliente());
+            ps.setString(4, em.getCodigo());
+            ps.setString(5, em.getEmpresa());
+            ps.setString(6, em.getFuncion());
+            ps.setInt(7, em.getDescuento());
+            ps.setString(8, em.getTipoCliente());
             ps.executeUpdate();
 
         } catch (Exception e) {
@@ -102,6 +117,7 @@ public class UsuarioDAO implements Validar {
         }
         return r;
     }
+    
 
     public Empresa ListarId(int IdCliente) {
         Empresa emp = new Empresa();
