@@ -48,7 +48,27 @@ public class ControladorPrincipal extends HttpServlet {
                 request.setAttribute("empresa", lista);
                 
                     break; 
-                case  "Agregar":break;
+                case  "Agregar":
+                    int id=1+edao.contador();
+                    String Dpi=request.getParameter("txtContacto");
+                    String nombre=request.getParameter("txtNombreCliente");
+                    String codigo=request.getParameter("txtCodigo");
+                    String empres=request.getParameter("txtEmpresa");
+                    String fun=request.getParameter("txtFuncion");
+                    String descuen=request.getParameter("txtDescuento");
+                    String tipo=request.getParameter("txtTipoCliente");
+                    int decuento=Integer.parseInt(descuen);
+                    em.setIdCliente(id);
+                    em.setDpi(Dpi);
+                    em.setNombreCliente(nombre);
+                    em.setCodigo(codigo);
+                    em.setEmpresa(empres);
+                    em.setFuncion(fun);
+                    em.setDescuento(decuento);
+                    em.setTipoCliente(tipo);
+                    edao.Agregar(em);
+                    request.getRequestDispatcher("ControladorPrincipal?menu=Ingesar_Cliente&accion=Listar").forward(request, response);
+                    break;  
                 case  "Editar":break;
                 case  "Eliminar":break;
                 default: throw new AssertionError();
