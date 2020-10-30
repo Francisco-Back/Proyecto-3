@@ -142,20 +142,19 @@ public class UsuarioDAO implements Validar {
     }
 
     public int Actulizar(Empresa em) {
-        System.out.println("si ingresa actuzalizar");
         String sql = "UPDATE ClIENTE SET dpi=?,nombrecliente=?,codigo=?,empresa=?,funcion=?,descuento=?,cliente1=? WHERE idcliente=?";
         try {
             conn = cn.getConexion();
             ps = conn.prepareStatement(sql);
-           
-            ps.setString(2, em.getDpi());
-            ps.setString(3, em.getNombreCliente());
-            ps.setString(4, em.getCodigo());
-            ps.setString(5, em.getEmpresa());
-            ps.setString(6, em.getFuncion());
-            ps.setInt(7, em.getDescuento());
-            ps.setString(8, em.getTipoCliente());
-             ps.setInt(1, em.getIdCliente());
+          
+            ps.setString(1, em.getDpi());
+            ps.setString(2, em.getNombreCliente());
+            ps.setString(3, em.getCodigo());
+            ps.setString(4, em.getEmpresa());
+            ps.setString(5, em.getFuncion());
+            ps.setInt(6, em.getDescuento());
+            ps.setString(7, em.getTipoCliente());
+            ps.setInt(8, em.getIdCliente());
             ps.executeUpdate();
 
         } catch (Exception e) {
