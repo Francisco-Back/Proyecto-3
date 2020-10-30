@@ -95,7 +95,7 @@ public class UsuarioDAO implements Validar {
 
         }
         return contador;
-    }
+    }    
 
     public int Agregar(Empresa em) {
         String sql = "INSERT INTO ClIENTE(idcliente,dpi,nombrecliente,codigo,empresa,funcion,descuento,cliente1)VALUES(?,?,?,?,?,?,?,? )";
@@ -119,41 +119,43 @@ public class UsuarioDAO implements Validar {
     }
     
 
-    public Empresa ListarId(int IdCliente) {
-        Empresa emp = new Empresa();
-        String sql = "SELECT * FROM CLIENTE WHERE IdCliente=" + IdCliente;
+    public Empresa ListarId(int id) {
+        Empresa em = new Empresa();
+        String sql = "SELECT * FROM CLIENTE WHERE IdCliente=" + id;
         try {
             conn = cn.getConexion();
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
-                emp.setDpi(rs.getString(2));
-                emp.setNombreCliente(rs.getString(3));
-                emp.setCodigo(rs.getString(4));
-                emp.setEmpresa(rs.getString(5));
-                emp.setFuncion(rs.getString(6));
-                emp.setDescuento(rs.getInt(7));
-                emp.setTipoCliente(rs.getString(8));
+                em.setDpi(rs.getString(2));
+                em.setNombreCliente(rs.getString(3));
+                em.setCodigo(rs.getString(4));
+                em.setEmpresa(rs.getString(5));
+                em.setFuncion(rs.getString(6));
+                em.setDescuento(rs.getInt(7));
+                em.setTipoCliente(rs.getString(8));
             }
         } catch (Exception e) {
 
         }
-        return emp;
+        return em;
     }
 
-    public int Actulizar(Empresa h) {
-        String sql = "UPDATE ClIENTE SET (dpi=?,nombrecliente=?,codigo=?,empresa=?,funcion=?,descuento=?,Cliente1=? WHERE idcliente=?)";
+    public int Actulizar(Empresa em) {
+        System.out.println("si ingresa actuzalizar");
+        String sql = "UPDATE ClIENTE SET dpi=?,nombrecliente=?,codigo=?,empresa=?,funcion=?,descuento=?,cliente1=? WHERE idcliente=?";
         try {
             conn = cn.getConexion();
             ps = conn.prepareStatement(sql);
-            ps.setInt(1, h.getIdCliente());
-            ps.setString(2, h.getDpi());
-            ps.setString(3, h.getNombreCliente());
-            ps.setString(4, h.getCodigo());
-            ps.setString(5, h.getEmpresa());
-            ps.setString(6, h.getFuncion());
-            ps.setInt(7, h.getDescuento());
-            ps.setString(8, h.getTipoCliente());
+           
+            ps.setString(2, em.getDpi());
+            ps.setString(3, em.getNombreCliente());
+            ps.setString(4, em.getCodigo());
+            ps.setString(5, em.getEmpresa());
+            ps.setString(6, em.getFuncion());
+            ps.setInt(7, em.getDescuento());
+            ps.setString(8, em.getTipoCliente());
+             ps.setInt(1, em.getIdCliente());
             ps.executeUpdate();
 
         } catch (Exception e) {
