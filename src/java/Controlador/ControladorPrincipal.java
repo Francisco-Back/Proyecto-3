@@ -34,6 +34,8 @@ public class ControladorPrincipal extends HttpServlet {
      */
     Empresa em= new Empresa();
     UsuarioDAO edao= new UsuarioDAO();
+    int aux;
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String menu=request.getParameter("menu");
@@ -69,7 +71,34 @@ public class ControladorPrincipal extends HttpServlet {
                     edao.Agregar(em);
                     request.getRequestDispatcher("ControladorPrincipal?menu=Ingesar_Cliente&accion=Listar").forward(request, response);
                     break;  
-                case  "Editar":break;
+                case  "Editar":
+                  aux=Integer.parseInt(request.getParameter("IdC"));
+                    Empresa h=edao.ListarId(aux);
+                    request.setAttribute("empres", h);
+                    request.getRequestDispatcher("ControladorPrincipal?menu=Ingesar_Cliente&accion=Listar").forward(request, response);
+                    break;
+                case "Actualizar":
+                    
+                   String Dpi1=request.getParameter("txtContacto");
+                    String nombre1=request.getParameter("txtNombreCliente");
+                    String codigo1=request.getParameter("txtCodigo");
+                    String empres1=request.getParameter("txtEmpresa");
+                    String fun1=request.getParameter("txtFuncion");
+                    String descuen1=request.getParameter("txtDescuento");
+                    String tipo1=request.getParameter("txtTipoCliente");
+                    int decuento1=Integer.parseInt(descuen1);
+                 
+                    em.setDpi(Dpi1);
+                    em.setNombreCliente(nombre1);
+                    em.setCodigo(codigo1);
+                    em.setEmpresa(empres1);
+                    em.setFuncion(fun1);
+                    em.setDescuento(decuento1);
+                    em.setTipoCliente(tipo1);
+                       em.setIdCliente(aux);
+                    edao.Actulizar(em);
+                    request.getRequestDispatcher("ControladorPrincipal?menu=Ingesar_Cliente&accion=Listar").forward(request, response);
+                    break;
                 case  "Eliminar":break;
                 default: throw new AssertionError();
             }
