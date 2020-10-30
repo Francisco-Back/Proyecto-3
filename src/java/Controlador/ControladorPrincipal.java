@@ -32,34 +32,34 @@ public class ControladorPrincipal extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    Empresa em= new Empresa();
-    UsuarioDAO edao= new UsuarioDAO();
+    Empresa em = new Empresa();
+    UsuarioDAO edao = new UsuarioDAO();
     int aux;
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String menu=request.getParameter("menu");
-        String accion=request.getParameter("accion");
-        if(menu.equals("Principal")){
+        String menu = request.getParameter("menu");
+        String accion = request.getParameter("accion");
+        if (menu.equals("Principal")) {
             request.getRequestDispatcher("Principal.jsp").forward(request, response);
         }
-        if(menu.equals("Ingesar_Cliente")){
-            switch(accion){
-                case  "Listar": 
-                    List lista=edao.Lista();
-                request.setAttribute("empresa", lista);
-                
-                    break; 
-                case  "Agregar":
-                    int id=1+edao.contador();
-                    String Dpi=request.getParameter("txtContacto");
-                    String nombre=request.getParameter("txtNombreCliente");
-                    String codigo=request.getParameter("txtCodigo");
-                    String empres=request.getParameter("txtEmpresa");
-                    String fun=request.getParameter("txtFuncion");
-                    String descuen=request.getParameter("txtDescuento");
-                    String tipo=request.getParameter("txtTipoCliente");
-                    int decuento=Integer.parseInt(descuen);
+        if (menu.equals("Ingesar_Cliente")) {
+            switch (accion) {
+                case "Listar":
+                    List lista = edao.Lista();
+                    request.setAttribute("empresa", lista);
+
+                    break;
+                case "Agregar":
+                    int id = 1 + edao.contador();
+                    String Dpi = request.getParameter("txtContacto");
+                    String nombre = request.getParameter("txtNombreCliente");
+                    String codigo = request.getParameter("txtCodigo");
+                    String empres = request.getParameter("txtEmpresa");
+                    String fun = request.getParameter("txtFuncion");
+                    String descuen = request.getParameter("txtDescuento");
+                    String tipo = request.getParameter("txtTipoCliente");
+                    int decuento = Integer.parseInt(descuen);
                     em.setIdCliente(id);
                     em.setDpi(Dpi);
                     em.setNombreCliente(nombre);
@@ -70,24 +70,24 @@ public class ControladorPrincipal extends HttpServlet {
                     em.setTipoCliente(tipo);
                     edao.Agregar(em);
                     request.getRequestDispatcher("ControladorPrincipal?menu=Ingesar_Cliente&accion=Listar").forward(request, response);
-                    break;  
-                case  "Editar":
-                  aux=Integer.parseInt(request.getParameter("IdC"));
-                    Empresa h=edao.ListarId(aux);
+                    break;
+                case "Editar":
+                    aux = Integer.parseInt(request.getParameter("IdC"));
+                    Empresa h = edao.ListarId(aux);
                     request.setAttribute("empres", h);
                     request.getRequestDispatcher("ControladorPrincipal?menu=Ingesar_Cliente&accion=Listar").forward(request, response);
                     break;
                 case "Actualizar":
-                    
-                   String Dpi1=request.getParameter("txtContacto");
-                    String nombre1=request.getParameter("txtNombreCliente");
-                    String codigo1=request.getParameter("txtCodigo");
-                    String empres1=request.getParameter("txtEmpresa");
-                    String fun1=request.getParameter("txtFuncion");
-                    String descuen1=request.getParameter("txtDescuento");
-                    String tipo1=request.getParameter("txtTipoCliente");
-                    int decuento1=Integer.parseInt(descuen1);
-                 
+
+                    String Dpi1 = request.getParameter("txtContacto");
+                    String nombre1 = request.getParameter("txtNombreCliente");
+                    String codigo1 = request.getParameter("txtCodigo");
+                    String empres1 = request.getParameter("txtEmpresa");
+                    String fun1 = request.getParameter("txtFuncion");
+                    String descuen1 = request.getParameter("txtDescuento");
+                    String tipo1 = request.getParameter("txtTipoCliente");
+                    int decuento1 = Integer.parseInt(descuen1);
+
                     em.setDpi(Dpi1);
                     em.setNombreCliente(nombre1);
                     em.setCodigo(codigo1);
@@ -95,30 +95,34 @@ public class ControladorPrincipal extends HttpServlet {
                     em.setFuncion(fun1);
                     em.setDescuento(decuento1);
                     em.setTipoCliente(tipo1);
-                       em.setIdCliente(aux);
+                    em.setIdCliente(aux);
                     edao.Actulizar(em);
                     request.getRequestDispatcher("ControladorPrincipal?menu=Ingesar_Cliente&accion=Listar").forward(request, response);
                     break;
-                case  "Eliminar":break;
-                default: throw new AssertionError();
+                case "Eliminar":
+                    aux = Integer.parseInt(request.getParameter("IdC"));
+                    edao.Eliminar(aux);
+                    request.getRequestDispatcher("ControladorPrincipal?menu=Ingesar_Cliente&accion=Listar").forward(request, response);
+                    break;
+                default:
+                    throw new AssertionError();
             }
             request.getRequestDispatcher("Ingesar_Cliente.jsp").forward(request, response);
-            
+
         }
-        if(menu.equals("Ingesar_Producto")){
+        if (menu.equals("Ingesar_Producto")) {
             request.getRequestDispatcher("Ingesar_Producto.jsp").forward(request, response);
-            
+
         }
-        if(menu.equals("Compra")){
+        if (menu.equals("Compra")) {
             request.getRequestDispatcher("Compra.jsp").forward(request, response);
-            
+
         }
-        if(menu.equals("Orden")){
+        if (menu.equals("Orden")) {
             request.getRequestDispatcher("Orden.jsp").forward(request, response);
-            
+
         }
-       
- 
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
