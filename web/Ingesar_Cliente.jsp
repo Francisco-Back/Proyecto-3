@@ -23,14 +23,15 @@
         <div class="card col-sm-6">
             <div class="card-body">
                 <form action="ControladorPrincipal?menu=Ingesar_Cliente" method="POST">
-                    <div class="form-group"> <label>Contacto</label><input type="text" name="txtContacto" class="form-control"> </div>
-                    <div class="form-group"> <label>NombreCliente</label><input type="text" name="txtNombreCliente" class="form-control"> </div>
-                    <div class="form-group"> <label>Codigo</label><input type="text" name="txtCodigo" class="form-control"> </div>
-                    <div class="form-group"> <label>Empresa</label><input type="text" name="txtEmpresa" class="form-control"> </div>
-                    <div class="form-group"> <label>Funcion</label><input type="text" name="txtFuncion" class="form-control"> </div>
-                    <div class="form-group"> <label>Descuento</label><input type="text" name="txtDescuento" class="form-control"> </div>
-                    <div class="form-group"> <label>TipoCliente</label><input type="text" name="txtTipoCliente" class="form-control"> </div>
+                    <div class="form-group"> <label>Contacto</label><input type="text" value="${empres.getDpi()}" name="txtContacto" class="form-control"> </div>
+                    <div class="form-group"> <label>NombreCliente</label><input type="text" value="${empres.getNombreCliente()}"  name="txtNombreCliente" class="form-control"> </div>
+                    <div class="form-group"> <label>Codigo</label><input type="text" value="${empres.getCodigo()}"  name="txtCodigo" class="form-control"> </div>
+                    <div class="form-group"> <label>Empresa</label><input type="text" value="${empres.getEmpresa()}"  name="txtEmpresa" class="form-control"> </div>
+                    <div class="form-group"> <label>Funcion</label><input type="text" value="${empres.getFuncion()}"   name="txtFuncion" class="form-control"> </div>
+                    <div class="form-group"> <label>Descuento</label><input type="text"  value="${empres.getDescuento()}" name="txtDescuento" class="form-control"> </div>
+                    <div class="form-group"> <label>TipoCliente</label><input type="text" value="${empres.getTipoCliente()}"  name="txtTipoCliente" class="form-control"> </div>
                     <input type="submit" name="accion" value="Agregar" class="btn btn-info">
+                    <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
                    
                 </form>
                 
@@ -64,8 +65,8 @@
                         <td>${em.getDescuento()}</td>
                         <td>${em.getTipoCliente()}</td>
                         <td> 
-                            <a>Editar</a>
-                            <a>Eliminar</a>
+                            <a class="btn btn-warning" href="ControladorPrincipal?menu=Ingesar_Cliente&accion=Editar&IdC=${em.getIdCliente()}">Editar</a>
+                            <a class="btn btn-danger" href="ControladorPrincipal?menu=Ingesar_Cliente&accion=Eliminar&IdC=${em.getIdCliente()}">Eliminar</a>
                         </td>
                     </tr>
                     </c:forEach>
