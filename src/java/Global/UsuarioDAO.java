@@ -28,9 +28,33 @@ public class UsuarioDAO implements Validar {
     PreparedStatement ps;
     ResultSet rs;
     int r;
+    
+    
+    public Cliente Buscar(int id){
+        Empresa nf= new Empresa ();
+        String sql="SELECT *FROM CLIENTE WHERE idcliente="+id;
+        try{
+            conn=cn.getConexion();
+            ps=conn.prepareStatement(sql);
+            ps.executeQuery();
+            while(rs.next()){
+                  nf.setIdCliente(rs.getInt(1));
+                nf.setDpi(rs.getString(2));
+                nf.setNombreCliente(rs.getString(3));
+                nf.setCodigo(rs.getString(4));
+                nf.setEmpresa(rs.getString(5));
+                nf.setFuncion(rs.getString(6));
+                nf.setDescuento(rs.getInt(7));
+                nf.setTipoCliente(rs.getString(8));
+            }
+        }catch(Exception e){
+            
+        }
+        return nf;
+    }
 
     @Override
-
+// se crea el metodo validar usuario
     public int Validar(Usuario user) {
         int r = 0;
         String sql = "Select * from USUARIOS where USUARIO=? and CONTRASENA=?";
@@ -174,4 +198,6 @@ public class UsuarioDAO implements Validar {
         }
 
     }
+ 
+   
 }
