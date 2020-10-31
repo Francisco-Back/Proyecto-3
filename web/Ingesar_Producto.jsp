@@ -24,7 +24,7 @@
                     <div class="from-group"><label></label><input type="text" value="${produc.getCodigo()}"  name="txtCodigo" class="form-control"placeholder="Codigo" > </div>
                     <div class="from-group"><label></label><input type="text" value="${produc.getMarca()}"  name="txtMarca" class="form-control"placeholder="Marca"> </div>
                     <div class="from-group"><label></label><input type="text" value="${produc.getFuncion()}"  name="txtFuncion" class="form-control"placeholder="Funcion"> </div>
-                    <div class="from-group"><label></label><input type="text" value="${produc.getprecio()}"   name="txtprecio" class="form-control"placeholder="precio"> </div>
+                    <div class="from-group"><label></label><input type="text" value="${produc.getPrecio()}"   name="txtprecio" class="form-control"placeholder="precio"> </div>
                     <div class="from-group"><label></label><input type="text"  value="${produc.getExistencia()}" name="txtExistencia" class="form-control"placeholder="Existencia"> </div>
                    
                     <br>
