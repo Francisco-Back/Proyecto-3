@@ -26,7 +26,7 @@
                     <a  href="ControladorPrincipal?menu=Compra" class="dropdown-item"  target="myFrame">Compra</a>
                     <a  href="ControladorPrincipal?menu=Orden "class="dropdown-item"  target="myFrame">Orden</a>
                     <a  href="ControladorPrincipal?menu=Ingesar_Cliente&accion=Listar"class="dropdown-item"  target="myFrame">Ingesar_Cliente</a>
-                    <a  href="ControladorPrincipal?menu=Ingesar_Producto" class="dropdown-item"  target="myFrame">Ingesar_Producto</a>
+                    <a  href="ControladorPrincipal?menu=Ingesar_Producto&accion=Listar" class="dropdown-item"  target="myFrame">Ingesar_Producto</a>
                     
                 </div>    
             </div>
