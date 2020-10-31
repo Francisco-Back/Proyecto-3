@@ -20,16 +20,17 @@
     </head>
     <body>
         <div class="d-flex">
-        <div class="card col-sm-6">
+        <div class="card col-sm-3">
             <div class="card-body">
                 <form action="ControladorPrincipal?menu=Ingesar_Cliente" method="POST">
-                    <div class="form-group"> <label>Contacto</label><input type="text" value="${empres.getDpi()}" name="txtContacto" class="form-control"> </div>
-                    <div class="form-group"> <label>NombreCliente</label><input type="text" value="${empres.getNombreCliente()}"  name="txtNombreCliente" class="form-control"> </div>
-                    <div class="form-group"> <label>Codigo</label><input type="text" value="${empres.getCodigo()}"  name="txtCodigo" class="form-control"> </div>
-                    <div class="form-group"> <label>Empresa</label><input type="text" value="${empres.getEmpresa()}"  name="txtEmpresa" class="form-control"> </div>
-                    <div class="form-group"> <label>Funcion</label><input type="text" value="${empres.getFuncion()}"   name="txtFuncion" class="form-control"> </div>
-                    <div class="form-group"> <label>Descuento</label><input type="text"  value="${empres.getDescuento()}" name="txtDescuento" class="form-control"> </div>
-                    <div class="form-group"> <label>TipoCliente</label><input type="text" value="${empres.getTipoCliente()}"  name="txtTipoCliente" class="form-control"> </div>
+                    <div class="from-group"><label></label><input type="text" value="${empres.getDpi()}" name="txtContacto" class="form-control"  placeholder="Contacto"> </div>
+                    <div class="from-group"><label></label><input type="text" value="${empres.getNombreCliente()}"  name="txtNombreCliente" class="form-control"placeholder="NombreCliente" > </div>
+                    <div class="from-group"><label></label><input type="text" value="${empres.getCodigo()}"  name="txtCodigo" class="form-control"placeholder="Codigo"> </div>
+                    <div class="from-group"><label></label><input type="text" value="${empres.getEmpresa()}"  name="txtEmpresa" class="form-control"placeholder="Empresa"> </div>
+                    <div class="from-group"><label></label><input type="text" value="${empres.getFuncion()}"   name="txtFuncion" class="form-control"placeholder="Funcion"> </div>
+                    <div class="from-group"><label></label><input type="text"  value="${empres.getDescuento()}" name="txtDescuento" class="form-control"placeholder="Descuento"> </div>
+                    <div class="from-group"><label></label><input type="text" value="${empres.getTipoCliente()}"  name="txtTipoCliente" class="form-control"placeholder="TipoCliente"> </div>
+                    <br>
                     <input type="submit" name="accion" value="Agregar" class="btn btn-info">
                     <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
                    
@@ -38,8 +39,8 @@
             </div>
         </div>
             <div class="col-sm-8">
-            <table class="table table-hover">
-                <thead>
+            <table class="table table-hover table table-striped" >
+                <thead  class="thead-dark">
                 <r>
                      <th>IdCliente</th>
                     <th>Contacto</th>
@@ -55,6 +56,7 @@
                 <tbody>
                     
                 <c:forEach var="em" items="${empresa}">
+                >>>
                     <tr>
                         <td>${em.getIdCliente()}</td>
                         <td>${em.getDpi()}</td>
@@ -65,8 +67,8 @@
                         <td>${em.getDescuento()}</td>
                         <td>${em.getTipoCliente()}</td>
                         <td> 
-                            <a class="btn btn-warning" href="ControladorPrincipal?menu=Ingesar_Cliente&accion=Editar&IdC=${em.getIdCliente()}">Editar</a>
-                            <a class="btn btn-danger" href="ControladorPrincipal?menu=Ingesar_Cliente&accion=Eliminar&IdC=${em.getIdCliente()}">Eliminar</a>
+                            <a class="btn btn-primary" href="ControladorPrincipal?menu=Ingesar_Cliente&accion=Editar&IdC=${em.getIdCliente()}">Editar</a>
+                            <a class="btn btn-warning" href="ControladorPrincipal?menu=Ingesar_Cliente&accion=Eliminar&IdC=${em.getIdCliente()}">Eliminar</a>
                         </td>
                     </tr>
                     </c:forEach>
