@@ -36,6 +36,7 @@ public class ControladorPrincipal extends HttpServlet {
             throws ServletException, IOException {
         String menu = request.getParameter("menu");
         String accion = request.getParameter("accion");
+       
         if (menu.equals("Principal")) {
             request.getRequestDispatcher("Principal.jsp").forward(request, response);
         }
@@ -99,6 +100,12 @@ public class ControladorPrincipal extends HttpServlet {
                     aux = Integer.parseInt(request.getParameter("IdC"));
                     edao.Eliminar(aux);
                     request.getRequestDispatcher("ControladorPrincipal?menu=Ingesar_Cliente&accion=Listar").forward(request, response);
+                    break;
+                case "Busqueda": 
+                  //String s=request.getParameter("op");
+                   
+                   
+                    request.getRequestDispatcher("ControladorPrincipal?menu=Ingesar_Cliente&accion=Busqueda").forward(request, response);
                     break;
                 default:
                     throw new AssertionError();
@@ -181,6 +188,8 @@ public class ControladorPrincipal extends HttpServlet {
 
         }
         if (menu.equals("Orden")) {
+           
+            
             request.getRequestDispatcher("Orden.jsp").forward(request, response);
 
         }
