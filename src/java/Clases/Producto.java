@@ -21,6 +21,7 @@ public class Producto {
     private String Marca;
     private String Funcion;
     private int precio;
+    private int Existencia;
 
     // se instancian los metodos constructores   
 
@@ -35,16 +36,20 @@ public class Producto {
         this.Marca = "";
         this.Funcion = "";
         this.precio = 0;
+        this.Existencia = 0;
     }
 
-    public Producto(int IdProducto, String NombreParte, String Codigo, String Marca, String Funcion, int precio) {
-        this.IdProducto = correlativoCodigo++;
+    public Producto(int IdProducto, String NombreParte, String Codigo, String Marca, String Funcion, int precio, int Existencia) {
+        this.IdProducto = IdProducto;
         this.NombreParte = NombreParte;
         this.Codigo = Codigo;
         this.Marca = Marca;
         this.Funcion = Funcion;
         this.precio = precio;
+        this.Existencia = Existencia;
     }
+
+  
 // se crean lso metodos get y set de la clase
     public int getIdProducto() {
         return IdProducto;
@@ -92,7 +97,17 @@ public class Producto {
 
     public void setPrecio(int precio) {
         this.precio = precio;
+        
     }
+
+    public int getExistencia() {
+        return Existencia;
+    }
+
+    public void setExistencia(int Existencia) {
+        this.Existencia = Existencia;
+    }
+    
 // se sobreescribe el metodo toString
     @Override
     public String toString() {
