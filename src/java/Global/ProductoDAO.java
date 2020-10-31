@@ -26,8 +26,8 @@ public class ProductoDAO {
     
 
    public List Lista() {
-        String sql = "SELECT * FROM PRODUCTO ";
-        List<Producto> lista = new ArrayList<>();
+        String sql = "SELECT * FROM PRODUCTO";
+        List<Producto> listap = new ArrayList<>();
         try {
             conn = cn.getConexion();
             ps = conn.prepareStatement(sql);
@@ -42,12 +42,12 @@ public class ProductoDAO {
                 pro.setPrecio(rs.getInt(6));
                 pro.setExistencia(rs.getInt(7));
                
-                lista.add(pro);
+                listap.add(pro);
             }
         } catch (Exception e) {
 
         }
-        return lista;
+        return listap;
     }
    
    public int contador() {
@@ -130,8 +130,8 @@ public class ProductoDAO {
         return r;
     }
 
-    public void Eliminar(int IdPliente) {
-        String sql = "DELETE FROM PRODUCTO WHERE IdPliente= " + IdPliente;
+    public void Eliminar(int IdProducto) {
+        String sql = "DELETE FROM PRODUCTO WHERE IdProducto= " + IdProducto;
         try {
             conn = cn.getConexion();
             ps = conn.prepareStatement(sql);
