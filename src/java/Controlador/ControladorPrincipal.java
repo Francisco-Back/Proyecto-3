@@ -5,10 +5,11 @@
  */
 package Controlador;
 
+import Clases.Producto;
+import Global.ProductoDAO;
 import Global.UsuarioDAO;
 import Herencia.Empresa;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,18 +24,13 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "ControladorPrincipal", urlPatterns = {"/ControladorPrincipal"})
 public class ControladorPrincipal extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+
     Empresa em = new Empresa();
     UsuarioDAO edao = new UsuarioDAO();
     int aux;
+    int auxp;
+    Producto pro=new Producto();
+    ProductoDAO pedao=new ProductoDAO();
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -110,10 +106,76 @@ public class ControladorPrincipal extends HttpServlet {
             request.getRequestDispatcher("Ingesar_Cliente.jsp").forward(request, response);
 
         }
+        
         if (menu.equals("Ingesar_Producto")) {
+            
+             switch (accion) {
+                case "Listar":
+                    List listap = pedao.Lista();
+                    request.setAttribute("producto", listap);
+
+                    break;
+                case "Agregar":
+                    int id = 1 + pedao.contador();
+                    String nombreparte = request.getParameter("txtNombreParte");
+                    String codigoparte = request.getParameter("txtCodigo");
+                    String marcaparte = request.getParameter("txtMarca");
+                    String funcionparte = request.getParameter("txtFuncion");
+                    String pecioparte = request.getParameter("txtprecio");
+                    String existenciaparte = request.getParameter("txtExistencia");
+                    int Existencia = Integer.parseInt(existenciaparte);
+                    int precio = Integer.parseInt(pecioparte);
+                    pro.setIdProducto(id);
+                    pro.setNombreParte(nombreparte);
+                    pro.setCodigo(codigoparte);
+                    pro.setMarca(marcaparte);
+                    pro.setFuncion(funcionparte);
+                    pro.setPrecio(precio);
+                    pro.setExistencia(Existencia);
+                    pedao.Agregar(pro);
+                    request.getRequestDispatcher("ControladorPrincipal?menu=Ingesar_Producto&accion=Listar").forward(request, response);
+                    break;
+                case "Editar":
+                    auxp = Integer.parseInt(request.getParameter("IdC"));
+                    Producto p = pedao.ListarId(auxp);
+                    request.setAttribute("produc", p);
+                    request.getRequestDispatcher("ControladorPrincipal?menu=Ingesar_Producto&accion=Listar").forward(request, response);
+                    break;
+                case "Actualizar":
+
+                    String nombreparte1 = request.getParameter("txtNombreParte");
+                    String codigoparte1 = request.getParameter("txtCodigo");
+                    String marcaparte1 = request.getParameter("txtMarca");
+                    String funcionparte1 = request.getParameter("txtFuncion");
+                    String pecioparte1 = request.getParameter("txtprecio");
+                    String existenciaparte1 = request.getParameter("txtExistencia");
+                    int Existencia1 = Integer.parseInt(existenciaparte1);
+                    int precio1 = Integer.parseInt(pecioparte1);
+                    pro.setIdProducto(auxp);
+                    pro.setNombreParte(nombreparte1);
+                    pro.setCodigo(codigoparte1);
+                    pro.setMarca(marcaparte1);
+                    pro.setFuncion(funcionparte1);
+                    pro.setPrecio(precio1);
+                    pro.setExistencia(Existencia1);
+                    pedao.Actulizar(pro);
+                    request.getRequestDispatcher("ControladorPrincipal?menu=Ingesar_Producto&accion=Listar").forward(request, response);
+                    break;
+                case "Eliminar":
+                    auxp = Integer.parseInt(request.getParameter("IdC"));
+                   pedao.Eliminar(auxp);
+                     request.getRequestDispatcher("ControladorPrincipal?menu=Ingesar_Producto&accion=Listar").forward(request, response);
+                    break;
+                default:
+                    throw new AssertionError();
+            }
             request.getRequestDispatcher("Ingesar_Producto.jsp").forward(request, response);
 
         }
+        
+        
+        
+        
         if (menu.equals("Compra")) {
             request.getRequestDispatcher("Compra.jsp").forward(request, response);
 
