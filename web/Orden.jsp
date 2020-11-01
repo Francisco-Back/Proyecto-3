@@ -14,23 +14,24 @@
     </head>
     <body>
         <div class="d-flex">
-            <form action="Controladorprin" metodo="post">
+            <form action="ControladorPrincipal?menu=Orden" method="post">
         <div class="card-group">
             
   <div class="card">
     
     <div class="card-body">
-    
+        <%-- Opcion datos Cliente--%>
       <h5 class="card-title">Datos Cliente</h5>
+        <%-- Opcion buscardor--%>
       <div class="form-row align-items-center d-flex">
-    <div class=" from-group col-sm-4"><label></label><input type="text" value="" name="txtId" class="form-control mb-4"  placeholder="Codigo"> </div>
-    <input type="submit" name="accion" value="Buscar" class="btn btn-info">
-   
-  
+    <div class=" from-group col-sm-4"><label></label><input type="text" value="${c.getIdCliente()}" name="txtId" class="form-control mb-4"  placeholder="Id Cliente"> </div>
+    <input type="submit" name="accion" value="BuscarCliente" class="btn btn-info">
+
   </div>
+        <%-- Opcion datos extras--%>
        <div class="row">
-        <div class=" from-group col-sm-4"><label></label><input type="text" value="" name="txtId" class="form-control"  placeholder="Contacto"> </div>
-        <div class=" from-group col-sm-4"><label></label><input type="text" value="" name="txtId" class="form-control"  placeholder="Empresa"> </div>
+        <div class=" from-group col-sm-4"><label></label><input type="text" value="${c.getNombreCliente()}" name="txtNombreO" class="form-control"  placeholder="Contacto"> </div>
+        <div class=" from-group col-sm-4"><label></label><input type="text" value="${c.getEmpresa()}" name="txtEmrepsaO" class="form-control"  placeholder="Empresa"> </div>
        
     
     </div>
@@ -41,18 +42,18 @@
   </div>
   <div class="card">
      <div class="card-body">
-        
+          <%-- Opcion datos Producto--%>
       <h5 class="card-title">Datos Producto</h5>  
       <div class="form-row align-items-center">
-    <div class=" from-group col-sm-4"><label></label><input type="text" value="" name="txtId" class="form-control mb-4"  placeholder="Codigo"> </div>
-     <input type="submit" name="accion" value="Buscar" class="btn btn-info">
+          <div class=" from-group col-sm-4"><label></label><input type="text" value="${p.getIdProducto()}" name="txtcodigo" class="form-control mb-4"  placeholder="Codigo"> </div>
+     <input type="submit" name="accion" value="BuscarProducto" class="btn btn-info">
 
   </div>
       <div class="row">
-        <div class=" from-group col-sm-4"><label></label><input type="text" value="" name="txtId" class="form-control"  placeholder="Nombre Producto"> </div>
-        <div class=" from-group col-sm-2"><label></label><input type="text" value="" name="txtId" class="form-control"  placeholder="Cantidad"> </div>
-        <div class=" from-group col-sm-2"><label></label><input type="text" value="" name="txtId" class="form-control"  placeholder="Stock"> </div>
-        <div class=" from-group col-sm-2"><label></label><input type="text" value="" name="txtId" class="form-control"  placeholder="Q00.00"> </div>
+        <div class=" from-group col-sm-4"><label></label><input type="text" value="${p.getNombreParte()}" name="txtId"setNombreParte class="form-control"  placeholder="Nombre Producto"> </div>
+        <div class=" from-group col-sm-2 "><label></label><input type="number" value="1" name="txtId" class="form-control"  placeholder="Cantidad"> </div>
+        <div class=" from-group col-sm-2"><label></label><input type="text" value="${p.getExistencia()}" name="txtId" class="form-control"  placeholder="Stock"> </div>
+        <div class=" from-group col-sm-2"><label></label><input type="text" value="${p.getPrecio()}" name="txtId" class="form-control"  placeholder="Q00.00"> </div>
     
     </div>
           <br>
@@ -73,14 +74,12 @@
                 <table class="table table-hover table table-striped" >
                     <thead  class="thead-dark">
                     <r>
-                        <th>IdCliente</th>
-                        <th>Contacto</th>
-                        <th>NombreCliente</th>
-                        <th>Codigo</th>
-                        <th>Empresa</th>
-                        <th>Funcion</th>
-                        <th>Descuento</th>
-                        <th>TipoCliente</th>
+                        <th>NoOrden</th>
+                        <th>codigo</th>
+                        <th>Descripcion</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th>sub Total</th>
                         <th>Acciones</th>
                     </r>
                     </thead>
@@ -95,8 +94,9 @@
                                 <td>${em.getCodigo()}</td>
                                 <td>${em.getEmpresa()}</td>
                                 <td>${em.getFuncion ()}</td>
-                                <td>${em.getDescuento()}</td>
-                                <td>${em.getTipoCliente()}</td>
+                             
+                            
+                               
                                 <td> 
                                     <a class="btn btn-primary" href="ControladorPrincipal?menu=Ingesar_Cliente&accion=Editar&IdC=${em.getIdCliente()}">Editar</a>
                                     <a class="btn btn-warning" href="ControladorPrincipal?menu=Ingesar_Cliente&accion=Eliminar&IdC=${em.getIdCliente()}">Eliminar</a>
