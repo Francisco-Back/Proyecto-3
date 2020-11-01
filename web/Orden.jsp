@@ -4,6 +4,7 @@
     Author     : Francisco Back
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -50,10 +51,10 @@
 
   </div>
       <div class="row">
-        <div class=" from-group col-sm-4"><label></label><input type="text" value="${p.getNombreParte()}" name="txtId"setNombreParte class="form-control"  placeholder="Nombre Producto"> </div>
-        <div class=" from-group col-sm-2 "><label></label><input type="number" value="1" name="txtId" class="form-control"  placeholder="Cantidad"> </div>
+        <div class=" from-group col-sm-4"><label></label><input type="text" value="${p.getNombreParte()}" name="txtdescr"setNombreParte class="form-control"  placeholder="Nombre Producto"> </div>
+        <div class=" from-group col-sm-2 "><label></label><input type="number" value="1" name="txtcant" class="form-control"  placeholder="Cantidad"> </div>
         <div class=" from-group col-sm-2"><label></label><input type="text" value="${p.getExistencia()}" name="txtId" class="form-control"  placeholder="Stock"> </div>
-        <div class=" from-group col-sm-2"><label></label><input type="text" value="${p.getPrecio()}" name="txtId" class="form-control"  placeholder="Q00.00"> </div>
+        <div class=" from-group col-sm-2"><label></label><input type="text" value="${p.getPrecio()}" name="txtpre" class="form-control"  placeholder="Q00.00"> </div>
     
     </div>
           <br>
@@ -63,8 +64,9 @@
             
     </div>
               <br>
-        <div>
-             <input type="submit" name="accion" value="Agregar" class="btn btn-info">
+              <div class="form-group">
+                  <input
+                      type="submit" name="accion" value="AgregarItems" class="btn btn-info ">
              </div>
               </form>
             </div>
@@ -87,28 +89,29 @@
 
                       
                             >>>
+                            <c:forEach  var="list" items="${carrito}">
                             <tr>
-                                <td>${em.getIdCliente()}</td>
-                                <td>${em.getDpi()}</td>
-                                <td>${em.getNombreCliente()}</td>
-                                <td>${em.getCodigo()}</td>
-                                <td>${em.getEmpresa()}</td>
-                                <td>${em.getFuncion ()}</td>
+                                <td>${list.getIdOrden()}</td>
+                                <td>${list.getCodigo()}</td>
+                                <td>${list.getDescripcion()}</td>
+                                <td>${list.getPrecio()}</td>
+                                <td>${list.getCantidad()}</td>
+                                <td>${list.getSubtotal()}</td>
                              
                             
                                
-                                <td> 
-                                    <a class="btn btn-primary" href="ControladorPrincipal?menu=Ingesar_Cliente&accion=Editar&IdC=${em.getIdCliente()}">Editar</a>
-                                    <a class="btn btn-warning" href="ControladorPrincipal?menu=Ingesar_Cliente&accion=Eliminar&IdC=${em.getIdCliente()}">Eliminar</a>
+                                <td>
+                                    <a class="btn btn-warning" href="ControladorPrincipal?menu=Orden&accion=Eliminar&ordeI=${list.getIdOrden()}">Eliminar</a>
                                 </td>
                             </tr>
+                            </c:forEach>
                     
                     </tbody>
                 </table>
             </div>
                                 <div>
-                                        <input type="submit" name="accion" value="Ventan" class="btn btn-success">
-                                        <input type="submit" name="accion" value="Cancelar" class="btn btn-danger">
+                                        <input type="submit"href="ControladorPrincipal?=nemu=Orden&accion=Venta" class="btn btn-success">
+                                        <input type="submit"  href="ControladorPrincipal?menu=Orden" value="Cancelar" class="btn btn-danger">
                                 </div>         
 
             
