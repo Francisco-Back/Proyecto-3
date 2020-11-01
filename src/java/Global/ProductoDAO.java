@@ -23,7 +23,27 @@ public class ProductoDAO {
     ResultSet rs;
     int r;
 
-    
+        public Producto Buscar(int codigo){
+        Producto ty= new Producto ();
+        String sql="SELECT * FROM PRODUCTO WHERE IdProducto="+codigo;
+        try{
+            conn=cn.getConexion();
+            ps=conn.prepareStatement(sql);
+            rs=ps.executeQuery();
+            while(rs.next()){
+                 ty.setIdProducto(rs.getInt(1));
+                ty.setNombreParte(rs.getString(2));
+                ty.setCodigo(rs.getString(3));
+                ty.setMarca(rs.getString(4));
+                ty.setFuncion(rs.getString(5));
+                ty.setPrecio(rs.getInt(6));
+                ty.setExistencia(rs.getInt(7));
+            }
+        }catch(Exception e){
+            
+        }
+        return ty;
+    }
 
    public List Lista() {
         String sql = "SELECT * FROM PRODUCTO";
@@ -139,7 +159,9 @@ public class ProductoDAO {
         } catch (Exception e) {
 
         }
+        
 
     }
+    
     
 }
