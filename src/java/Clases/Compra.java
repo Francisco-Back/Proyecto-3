@@ -23,16 +23,15 @@ public class Compra {
     private double PrecioEnvio;
     private double Total;
     private String Envio;
+    private String Codigo;
+    private String Descripcion;
     private String Estado;
-    static int sigldOrden;
+    private int precio;
+    private int cantidad;
+    private int subtotal;
     private int DiasEnvio;
     
     // se crea los metodos constructores
-
-    public Compra(int idOrden) {
-
-        this.IdOrden = correlativo++;
-    }
 
     public Compra() {
 
@@ -56,19 +55,130 @@ public class Compra {
         IdOrden = pCliente;
     }
 
-    public Compra(int idOrden, Date FechaOrden,  String Envio,  ItemOrden item1, Cliente cliente, ItemOrden item2,  double PrecioEnvio, double Total,String Estado, int DiasEnvio) {
-        this.IdOrden = idOrden;
-        this.cliente = cliente;
-        this.item1 = item1;
-        this.item2 = item2;
+    public Compra(int IdOrden, Date FechaOrden, double PrecioEnvio, double Total, String Envio, String Codigo, String Descripcion, String Estado, int precio, int cantidad, int subtotal, int DiasEnvio) {
+        this.IdOrden = IdOrden;
         this.FechaOrden = FechaOrden;
         this.PrecioEnvio = PrecioEnvio;
         this.Total = Total;
         this.Envio = Envio;
+        this.Codigo = Codigo;
+        this.Descripcion = Descripcion;
         this.Estado = Estado;
+        this.precio = precio;
+        this.cantidad = cantidad;
+        this.subtotal = subtotal;
         this.DiasEnvio = DiasEnvio;
     }
 
+    public int getIdOrden() {
+        return IdOrden;
+    }
+
+    public void setIdOrden(int IdOrden) {
+        this.IdOrden = IdOrden;
+    }
+
+    public ItemOrden getItem2() {
+        return item2;
+    }
+
+    public void setItem2(ItemOrden item2) {
+        this.item2 = item2;
+    }
+
+    public Date getFechaOrden() {
+        return FechaOrden;
+    }
+
+    public void setFechaOrden(Date FechaOrden) {
+        this.FechaOrden = FechaOrden;
+    }
+
+    public double getPrecioEnvio() {
+        return PrecioEnvio;
+    }
+
+    public void setPrecioEnvio(double PrecioEnvio) {
+        this.PrecioEnvio = PrecioEnvio;
+    }
+
+    public double getTotal() {
+        return Total;
+    }
+
+    public void setTotal(double Total) {
+        this.Total = Total;
+    }
+
+    public String getEnvio() {
+        return Envio;
+    }
+
+    public void setEnvio(String Envio) {
+        this.Envio = Envio;
+    }
+
+    public String getCodigo() {
+        return Codigo;
+    }
+
+    public void setCodigo(String Codigo) {
+        this.Codigo = Codigo;
+    }
+
+    public String getDescripcion() {
+        return Descripcion;
+    }
+
+    public void setDescripcion(String Descripcion) {
+        this.Descripcion = Descripcion;
+    }
+
+    public String getEstado() {
+        return Estado;
+    }
+
+    public void setEstado(String Estado) {
+        this.Estado = Estado;
+    }
+
+    public int getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(int precio) {
+        this.precio = precio;
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public int getSubtotal() {
+        return subtotal;
+    }
+
+    public void setSubtotal(int subtotal) {
+        this.subtotal = subtotal;
+    }
+
+    public int getDiasEnvio() {
+        return DiasEnvio;
+    }
+
+    public void setDiasEnvio(int DiasEnvio) {
+        this.DiasEnvio = DiasEnvio;
+    }
+
+ 
+
+
+
+  
   
     
 
