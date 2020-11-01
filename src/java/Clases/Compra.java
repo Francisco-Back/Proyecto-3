@@ -16,6 +16,8 @@ public class Compra {
 
     private static int correlativo = 1;
     private int IdOrden;
+    private int Idproducto;
+    private int Idcli;
     Cliente cliente;
     ItemOrden item1;
     ItemOrden item2;
@@ -26,37 +28,20 @@ public class Compra {
     private String Codigo;
     private String Descripcion;
     private String Estado;
-    private int precio;
+    private double precio;
     private int cantidad;
-    private int subtotal;
+    private double subtotal;
     private int DiasEnvio;
     
     // se crea los metodos constructores
-
-    public Compra() {
-
-        Total = 0.0;
-        FechaOrden = new Date();
-
+    public Compra(){
+        
     }
 
-    public Compra(Date pfecha) {
-        this();
-        FechaOrden = pfecha;
-
-    }
-
-  
-    
-    
-
-    public Compra(int pCliente, Date Pfecha) {
-        this(Pfecha);
-        IdOrden = pCliente;
-    }
-
-    public Compra(int IdOrden, Date FechaOrden, double PrecioEnvio, double Total, String Envio, String Codigo, String Descripcion, String Estado, int precio, int cantidad, int subtotal, int DiasEnvio) {
+    public Compra(int IdOrden, int Idproducto, int Idcli, Date FechaOrden, double PrecioEnvio, double Total, String Envio, String Codigo, String Descripcion, String Estado, double precio, int cantidad, double subtotal, int DiasEnvio) {
         this.IdOrden = IdOrden;
+        this.Idproducto = Idproducto;
+        this.Idcli = Idcli;
         this.FechaOrden = FechaOrden;
         this.PrecioEnvio = PrecioEnvio;
         this.Total = Total;
@@ -69,6 +54,24 @@ public class Compra {
         this.subtotal = subtotal;
         this.DiasEnvio = DiasEnvio;
     }
+
+    public int getIdproducto() {
+        return Idproducto;
+    }
+
+    public void setIdproducto(int Idproducto) {
+        this.Idproducto = Idproducto;
+    }
+
+    public int getIdcli() {
+        return Idcli;
+    }
+
+    public void setIdcli(int Idcli) {
+        this.Idcli = Idcli;
+    }
+
+
 
     public int getIdOrden() {
         return IdOrden;
@@ -142,11 +145,11 @@ public class Compra {
         this.Estado = Estado;
     }
 
-    public int getPrecio() {
+    public double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(int precio) {
+    public void setPrecio(double precio) {
         this.precio = precio;
     }
 
@@ -158,11 +161,11 @@ public class Compra {
         this.cantidad = cantidad;
     }
 
-    public int getSubtotal() {
+    public double getSubtotal() {
         return subtotal;
     }
 
-    public void setSubtotal(int subtotal) {
+    public void setSubtotal(double subtotal) {
         this.subtotal = subtotal;
     }
 
