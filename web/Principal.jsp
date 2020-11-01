@@ -24,7 +24,7 @@
                 <div  class="dropdown-menu text-center">
                     <a  href="Principal.jsp" class="dropdown-item">Inicio</a>
                     <a  href="ControladorPrincipal?menu=Compra" class="dropdown-item"  target="myFrame">Compra</a>
-                    <a  href="ControladorPrincipal?menu=Orden "class="dropdown-item"  target="myFrame">Orden</a>
+                    <a  href="ControladorPrincipal?menu=Orden&accion=default"class="dropdown-item"  target="myFrame">Orden</a>
                     <a  href="ControladorPrincipal?menu=Ingesar_Cliente&accion=Listar"class="dropdown-item"  target="myFrame">Ingesar_Cliente</a>
                     <a  href="ControladorPrincipal?menu=Ingesar_Producto&accion=Listar" class="dropdown-item"  target="myFrame">Ingesar_Producto</a>
                     
