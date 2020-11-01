@@ -5,11 +5,16 @@
  */
 package Controlador;
 
+import Clases.Compra;
+import Clases.ItemOrden;
 import Clases.Producto;
+import Global.CompraDAO;
 import Global.ProductoDAO;
 import Global.UsuarioDAO;
 import Herencia.Empresa;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,6 +36,18 @@ public class ControladorPrincipal extends HttpServlet {
     int auxp;
     Producto pro=new Producto();
     ProductoDAO pedao=new ProductoDAO();
+    CompraDAO compedao=new CompraDAO();
+      Compra nueva=new Compra();
+           List<Compra> carrito=new ArrayList<>();
+           int items;
+           String Codigo;
+           String Descripcion;
+           double precio;
+           int cantidad;
+           double stotal;
+           double total;
+           int idpro;
+           int idcli;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -184,22 +201,95 @@ public class ControladorPrincipal extends HttpServlet {
         
         
         if (menu.equals("Compra")) {
+            switch (accion) {
+                case "Listar":
+                    List lista = compedao.Listac();
+                    request.setAttribute("compra", lista);
+
+                    break;
+               default:
+                    throw new AssertionError();
+            }
             request.getRequestDispatcher("Compra.jsp").forward(request, response);
 
         }
         if (menu.equals("Orden")) {
            switch(accion){
                case "BuscarCliente":
-                   int id=Integer.parseInt(request.getParameter("txtId"));
-                   em.setIdCliente(id);
-                   em = edao.Buscar(id);
+                    idcli=Integer.parseInt(request.getParameter("txtId"));
+         
+                   em.setIdCliente(idcli);
+                   em = edao.Buscar(idcli);
                request.setAttribute("c", em);
                   break;
                case "BuscarProducto":
-                   int ids=Integer.parseInt(request.getParameter("txtcodigo"));
-                   pro.setIdProducto(ids);
-                   pro =pedao.Buscar(ids);
+                    idpro=Integer.parseInt(request.getParameter("txtcodigo"));
+                   pro.setIdProducto(idpro);
+                   pro =pedao.Buscar(idpro);
                    request.setAttribute("p", pro);
+                   request.setAttribute("c", em);
+                       request.setAttribute("carrito", carrito);
+                   break;
+               case "AgregarItems":
+                   
+           items=items+1;
+           Codigo=pro.getCodigo();
+            Descripcion = request.getParameter("txtdescr");
+            precio=Double.parseDouble(request.getParameter("txtpre"));
+            cantidad=Integer.parseInt(request.getParameter("txtcant"));
+            stotal=precio*cantidad;
+            nueva=new Compra();
+            nueva.setIdOrden(items);
+            nueva.setCodigo(Codigo);
+            nueva.setDescripcion(Descripcion);
+            nueva.setPrecio(precio);
+            nueva.setCantidad(cantidad);
+            nueva.setSubtotal(stotal);
+           carrito.add(nueva);
+           for(int i=0;i<carrito.size();i++){
+               total=total+carrito.get(i).getSubtotal();
+           }
+           request.setAttribute("total", total);
+           request.setAttribute("p", pro);
+           request.setAttribute("c", em);
+           request.setAttribute("carrito", carrito);
+              break;
+               case "Eliminar":
+                   
+                  int rt=Integer.parseInt(request.getParameter("ordeI")); 
+                  if(rt==1){
+                      rt=0;
+                           carrito.remove(rt);
+                  }else{
+                      if(rt>1){
+                      rt=rt-1;
+                      carrito.remove(rt);
+                  }else if(rt==2){
+                      rt=1;
+                      carrito.remove(rt);
+                  }
+                  }
+                   request.setAttribute("p", pro);
+           request.setAttribute("c", em);
+           request.setAttribute("carrito", carrito);
+                   break;
+               case "Venta":
+                   int oo=1+compedao.contador();
+                   Compra bitacora= new Compra();
+                   bitacora.setIdcli(idcli);
+                   bitacora.setIdproducto(idpro);
+                   bitacora.setIdOrden(oo);
+               Date FechaOrden=new Date();
+              bitacora.setFechaOrden(FechaOrden);
+           bitacora.setPrecioEnvio(15.00);
+           bitacora.setTotal(total);
+           bitacora.setEnvio("Cargo");
+           bitacora.setEstado("Enviado");
+           bitacora.setEstado("Enviado");
+           bitacora.setDiasEnvio(2);
+           bitacora.setDiasEnvio(2);
+           bitacora.setDescripcion(carrito.size()+"---Productos");
+           compedao.Agregar(bitacora);
                    break;
                 default:
                     
