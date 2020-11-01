@@ -12,12 +12,14 @@ import Global.Utileria;
  * @author Francisco Back
  */
 public class ItemOrden {
+    private static int correlativoCodigo=1;
       private int Nolinea;
     private int Cantidad;
     Producto producto;
     private int subtotal;
 
     int aux=1;
+    
 // se crea los metodo constructores
     public static int sigIdOrden(int pNolinea,int aux) {
          return aux + pNolinea;
@@ -33,6 +35,13 @@ public class ItemOrden {
        Cantidad = pCantidad;
        pldproducto=producto.getIdProducto();
     }
+
+    public ItemOrden() {
+        this.Nolinea = correlativoCodigo++;
+        this.Cantidad = Cantidad;
+        this.subtotal = subtotal;
+    }
+    
 
     // se crea los  metodos get y set
     public int getNolinea() {
@@ -55,6 +64,15 @@ public class ItemOrden {
         return producto.getPrecio()*Cantidad;
     }
 
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
+
+ 
     // se crea el nmetodo toString
     @Override
     public String toString() {
