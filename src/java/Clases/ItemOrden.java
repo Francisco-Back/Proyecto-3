@@ -15,6 +15,7 @@ public class ItemOrden {
       private int Nolinea;
     private int Cantidad;
     Producto producto;
+    private int subtotal;
 
     int aux=1;
 // se crea los metodo constructores
