@@ -75,7 +75,6 @@ public class Compra {
     
 // no se crea los metodos get y set
  
-    
 
 
 
