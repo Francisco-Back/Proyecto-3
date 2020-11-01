@@ -30,13 +30,13 @@ public class UsuarioDAO implements Validar {
     int r;
     
     
-    public Cliente Buscar(int id){
+    public Empresa Buscar(int id){
         Empresa nf= new Empresa ();
-        String sql="SELECT *FROM CLIENTE WHERE idcliente="+id;
+        String sql="SELECT * FROM CLIENTE WHERE IdCliente="+id;
         try{
             conn=cn.getConexion();
             ps=conn.prepareStatement(sql);
-            ps.executeQuery();
+            rs=ps.executeQuery();
             while(rs.next()){
                   nf.setIdCliente(rs.getInt(1));
                 nf.setDpi(rs.getString(2));
