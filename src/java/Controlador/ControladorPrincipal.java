@@ -188,8 +188,23 @@ public class ControladorPrincipal extends HttpServlet {
 
         }
         if (menu.equals("Orden")) {
-           
-            
+           switch(accion){
+               case "BuscarCliente":
+                   int id=Integer.parseInt(request.getParameter("txtId"));
+                   em.setIdCliente(id);
+                   em = edao.Buscar(id);
+               request.setAttribute("c", em);
+                  break;
+               case "BuscarProducto":
+                   int ids=Integer.parseInt(request.getParameter("txtcodigo"));
+                   pro.setIdProducto(ids);
+                   pro =pedao.Buscar(ids);
+                   request.setAttribute("p", pro);
+                   break;
+                default:
+                    
+            }
+         
             request.getRequestDispatcher("Orden.jsp").forward(request, response);
 
         }
